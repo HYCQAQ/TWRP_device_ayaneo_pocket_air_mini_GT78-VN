@@ -65,12 +65,12 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 BOARD_KERNEL_IMAGE_NAME := Image
 
-# Kernel - 预编译内核与 DTB 传参
+# Kernel - 预编译内核与 DTB
 TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_KERNEL_IMAGE_NAME := Image
 
-# 明确告诉 mkbootimg 去哪里吃这个 dtb 文件
+# 告诉 mkbootimg 使用输出目录下的 dtb（此时 BoardConfig 不负责复制，只负责指路）
 BOARD_MKBOOTIMG_ARGS += --dtb $(PRODUCT_OUT)/dtb.img
 
 # Partitions 分区大小（请务必确认 33554432 是否与你提取的官方 boot.img 大小一致）
