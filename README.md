@@ -1,5 +1,5 @@
 
-Ayaneo Pocket Air Mini 设备配置 代号(GT78-CN)
+Ayaneo Pocket Air Mini 设备配置 代号(GT78-VN)
 ===================================================
 
 Ayaneo Pocket Air Mini 是一款运行 Android 系统的掌上游戏机。
@@ -19,7 +19,7 @@ Ayaneo Pocket Air Mini 是一款运行 Android 系统的掌上游戏机。
 | 前置摄像头              | 无                                                                                                        |
 
 
-Device configuration for Ayaneo Pocket Air Mini codenamed(GT78-CN)
+Device configuration for Ayaneo Pocket Air Mini codenamed(GT78-VN)
 ===================================================
 
 The Ayaneo Pocket Air Mini is a handheld gaming console running Android.
