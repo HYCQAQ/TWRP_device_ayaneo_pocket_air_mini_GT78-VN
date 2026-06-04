@@ -142,3 +142,6 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
     android.hardware.boot@1.0-service.recovery
+
+# 兼容性代号
+TARGET_RECOVERY_DEVICE_ALIASES := GT78-VN
