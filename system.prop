@@ -1,8 +1,18 @@
 # 强制开启 Recovery 环境下的 MTP 与 ADB 调试
-ro.sys.usb.storage.type=mtp
+ro.sys.usb.storage.type=mtk
 ro.sys.usb.bicr=no
 ro.sys.usb.charging.only=no
-
-# 联发科 MT6785 通用高层握手 VID/PID，让 Windows 正确加载 MTP 驱动
 ro.recovery.usb.vid=0E8D
 ro.recovery.usb.pid=2008
+
+# MTK 平台安全加密参数（关键：用于解锁 Data 分区）
+ro.mediatek.platform=MT6785
+ro.hardware=mt6785
+ro.hardware.kmsetkey=beanpod
+ro.hardware.gatekeeper=beanpod
+ro.mtk_tee_gp_support=1
+ro.mtk_microtrust_tee_support=1
+
+# 加密解密模式
+ro.crypto.volume.filenames_mode=aes-256-cts
+fbe.metadata.wrappedkey=true
