@@ -8,7 +8,7 @@
 
 set -e
 
-DEVICE=GT78-VN
+DEVICE=GT78_VN
 VENDOR=arbor
 
 # Load extract_utils and do some sanity checks
