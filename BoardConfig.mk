@@ -107,18 +107,23 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 # TWRP 界面与显示配置（横屏掌机模式）
 TW_THEME := landscape_hdpi
 RECOVERY_VARIANT := twrp
-TW_EXTRA_LANGUAGES := true
+# 语言包精简：关闭“全语言包”
+TW_EXTRA_LANGUAGES := false
+TW_DEFAULT_LANGUAGE := zh_CN
+
 TW_SCREEN_BLANK_ON_BOOT := true
 # 修复：精准屏蔽内置的 Xbox360 手柄事件流，让 hyn_ts 触屏恢复正常
 TW_INPUT_BLACKLIST := "hbtp_vm X-box Microsoft pad"
 TW_USE_TOOLBOX := true
-TW_INCLUDE_REPACKTOOLS := true
+# 精简空间关闭重打包工具
+TW_INCLUDE_REPACKTOOLS := false
 TW_SCREEN_RES_X := 1280
 TW_SCREEN_RES_Y := 960
-TW_DEFAULT_LANGUAGE := zh_CN
+
 
 # ADB 调试配置
 TW_ADB_ENABLE_IN_STARTUP := true
+# 精简空间关闭调试工具
 TWRP_INCLUDE_LOGCAT := true
 TW_USE_NEW_MINADBD := true
 
@@ -142,3 +147,13 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 # 兼容性代号
 TARGET_RECOVERY_DEVICE_ALIASES := GT78-VN
+
+# ====== TWRP 镜像瘦身优化 (修复体积超限) ======
+# 丢弃二进制文件中的调试符号和无用部分（大幅减小体积）
+BOARD_DO_NOT_STRIP_RECOVERY := false
+TARGET_STRIP := always
+
+# 强制使用最高压缩率的 lz4 或 gzip 压缩工具
+# （如果你的编译链支持，系统会自动使用更高效的压缩算法）
+LZMA_RAMDISK_TARGET_COMPRESSION := true
+
