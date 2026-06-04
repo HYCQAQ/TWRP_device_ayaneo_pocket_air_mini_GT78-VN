@@ -16,7 +16,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/arbor/GT78-VN/device.mk)
 
 PRODUCT_DEVICE := GT78-VN
-PRODUCT_NAME := omni_GT78-VN
+PRODUCT_NAME := omni_GT78_VN
 PRODUCT_BRAND := ARBOR
 PRODUCT_MODEL := GT78-VN
 PRODUCT_MANUFACTURER := arbor
