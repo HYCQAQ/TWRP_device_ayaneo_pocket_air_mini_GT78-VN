@@ -62,21 +62,15 @@ BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-# 在 BOARD_MKBOOTIMG_ARGS 中加入 --dtb 参数，直接指向你的预构建 dtb 文件
-BOARD_MKBOOTIMG_ARGS += --dtb $(DEVICE_PATH)/prebuilt/dtb.img
 
 BOARD_KERNEL_IMAGE_NAME := Image
-# BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-# TARGET_KERNEL_CONFIG := _defconfig
-# TARGET_KERNEL_SOURCE := kernel/arbor/GT78-VN
 
-# Kernel - 使用预编译内核
+# Kernel - 使用预编译内核及安卓 12 标准 DTB 适配
 TARGET_FORCE_PREBUILT_KERNEL := true
 ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-# 删除不再需要的 TARGET_PREBUILT_DTB 定义（可选）
-# TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-# 修复：删除了这里的 BOARD_MKBOOTIMG_ARGS += --dtb ...，交给系统自动挂载，防止参数重复报错
+  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+  BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+  BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
 endif
 
 # Partitions 分区大小（请务必确认 33554432 是否与你提取的官方 boot.img 大小一致）
@@ -103,7 +97,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 PLATFORM_VERSION := 12
 
 # 修复：安全补丁日期【必须】改成你掌机当前官方系统的真实日期，否则无法解密 DATA
-# 举例：如果是 2021年8月1日，请保持下方不变。如果是其他日期请手动替换。
 PLATFORM_SECURITY_PATCH := 2022-09-01
 VENDOR_SECURITY_PATCH := 2022-09-01
 
