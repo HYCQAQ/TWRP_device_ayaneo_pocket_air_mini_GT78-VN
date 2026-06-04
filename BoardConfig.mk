@@ -23,20 +23,20 @@ AB_OTA_PARTITIONS += \
 # 没有独立 recovery 分区，Recovery 包含在 boot 中
 BOARD_USES_RECOVERY_AS_BOOT := true
 
-# Architecture 架构参数 (MT6785)
+# 主架构 (保持不变)
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 := 
-TARGET_CPU_VARIANT := cortex-a76
+TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
+# 副架构 (修改为符合 Android 12 规范的定义)
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a55
-TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
 # APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
