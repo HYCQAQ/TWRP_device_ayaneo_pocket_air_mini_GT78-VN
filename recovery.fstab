@@ -7,7 +7,7 @@
 /product                  ext4      product                                                  flags=display="Product";logical;slotselect
 
 # 核心数据分区
-/metadata                 ext4      /dev/block/platform/bootdevice/by-name/md_udc            flags=display="Metadata"
+/metadata                 ext4      /dev/block/platform/bootdevice/by-name/md_udc            flags=display="Metadata";wrappedkey
 /data                     ext4      /dev/block/platform/bootdevice/by-name/userdata          flags=display="Data"
 
 # MTK 传统保护与配置分区
@@ -49,4 +49,4 @@
 
 # 修复：规范化外置 MicroSD 卡和 USB-OTG 挂载，使其在 TWRP 存储列表中可见
 /external_sd              vfat      /dev/block/mmcblk1p1                                     flags=display="MicroSD Card";storage;wipeui;removable
-/usb_otg                  vfat      /dev/block/sda1
+/usb_otg                  vfat      /dev/block/sda1                                          flags=display="USB-OTG";storage;wipeui;removable
