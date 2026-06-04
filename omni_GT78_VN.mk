@@ -10,7 +10,7 @@
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from GT78-VN device
 $(call inherit-product, device/arbor/GT78-VN/device.mk)
