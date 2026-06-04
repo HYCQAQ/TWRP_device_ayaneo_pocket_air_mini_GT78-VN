@@ -6,7 +6,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_GT78-VN.mk
+    $(LOCAL_DIR)/omni_GT78_VN.mk
 
 COMMON_LUNCH_CHOICES := \
     omni_GT78_VN-userdebug \
