@@ -5,7 +5,7 @@
 #
 
 # 路径需与你在线编译器填写的 DEVICE_PATH 严格一致
-DEVICE_PATH := device/arbor/GT78-VN
+DEVICE_PATH := device/arbor/GT78_VN
 
 # 允许最小清单缺少非必要依赖
 ALLOW_MISSING_DEPENDENCIES := true
@@ -65,7 +65,7 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-TARGET_KERNEL_CONFIG := GT78-VN_defconfig
+TARGET_KERNEL_CONFIG := _defconfig
 TARGET_KERNEL_SOURCE := kernel/arbor/GT78-VN
 
 # Kernel - 使用预编译内核
