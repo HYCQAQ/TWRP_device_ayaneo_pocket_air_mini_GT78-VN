@@ -104,16 +104,15 @@ PLATFORM_VERSION := 11
 PLATFORM_SDK_VERSION := 30
 
 # TWRP Configuration
-TW_THEME := portrait_hdpi
+TW_THEME := landscape_hdpi
 RECOVERY_VARIANT := twrp
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
-
-# Screen Rotation (90 degrees for landscape devices)
-TW_ROTATION := 90
+TW_SCREEN_RES_X := 1280
+TW_SCREEN_RES_Y := 960
 
 # Default Language (Simplified Chinese)
 TW_DEFAULT_LANGUAGE := zh_CN
