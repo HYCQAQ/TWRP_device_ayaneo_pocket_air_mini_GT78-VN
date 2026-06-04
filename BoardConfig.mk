@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-DEVICE_PATH := device/arbor/ GT78-VN
+DEVICE_PATH := device/arbor/GT78-VN
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -58,8 +58,8 @@ BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-TARGET_KERNEL_CONFIG :=  GT78-VN_defconfig
-TARGET_KERNEL_SOURCE := kernel/arbor/ GT78-VN
+TARGET_KERNEL_CONFIG := GT78-VN_defconfig
+TARGET_KERNEL_SOURCE := kernel/arbor/GT78-VN
 
 # Kernel - prebuilt
 TARGET_FORCE_PREBUILT_KERNEL := true
