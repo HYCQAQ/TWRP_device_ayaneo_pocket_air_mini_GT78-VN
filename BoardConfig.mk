@@ -152,12 +152,10 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 # 兼容性代号
 TARGET_RECOVERY_DEVICE_ALIASES := GT78-VN
 
-# ====== TWRP 镜像瘦身优化 (修复体积超限) ======
-# 丢弃二进制文件中的调试符号和无用部分（大幅减小体积）
+# ====== TWRP 镜像瘦身优化 (修正编译冲突版) ======
+# 只通过 BOARD_DO_NOT_STRIP_RECOVERY 控制是否剥离调试符号
 BOARD_DO_NOT_STRIP_RECOVERY := false
-TARGET_STRIP := always
 
-# 强制使用最高压缩率的 lz4 或 gzip 压缩工具
-# （如果你的编译链支持，系统会自动使用更高效的压缩算法）
+# 使用更通用的压缩配置
 LZMA_RAMDISK_TARGET_COMPRESSION := true
 
