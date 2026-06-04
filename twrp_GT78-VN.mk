@@ -15,7 +15,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 $(call inherit-product, device/arbor/GT78-VN/device.mk)
 
 PRODUCT_DEVICE := GT78-VN
-PRODUCT_NAME := twrp_GT78_VN
+PRODUCT_NAME := twrp_GT78-VN
 PRODUCT_BRAND := ARBOR
 PRODUCT_MODEL := GT78-VN
 PRODUCT_MANUFACTURER := arbor
