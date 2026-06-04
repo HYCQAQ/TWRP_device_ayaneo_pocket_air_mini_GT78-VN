@@ -1,23 +1,21 @@
 #
 # Copyright (C) 2026 The Android Open Source Project
 # Copyright (C) 2026 SebaUbuntu's TWRP device tree generator
-#
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit from those products. Most specific first.
+# 继承 TWRP 12.1 官方核心配置
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+# 修复：删除了原本会报错的 vendor/omni/config/common.mk 这一行
 
-# Inherit from GT78-VN device
+# 继承设备专有配置
 $(call inherit-product, device/arbor/GT78-VN/device.mk)
 
 PRODUCT_DEVICE := GT78-VN
-PRODUCT_NAME := omni_GT78_VN
+PRODUCT_NAME := twrp_GT78_VN
 PRODUCT_BRAND := ARBOR
 PRODUCT_MODEL := GT78-VN
 PRODUCT_MANUFACTURER := arbor
