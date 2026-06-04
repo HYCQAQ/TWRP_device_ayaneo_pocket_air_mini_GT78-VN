@@ -65,13 +65,13 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 
 BOARD_KERNEL_IMAGE_NAME := Image
 
-# Kernel - 使用预编译内核及安卓 12 标准 DTB 适配
+# Kernel - 预编译内核与 DTB 传参
 TARGET_FORCE_PREBUILT_KERNEL := true
-ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-  TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
-  BOARD_INCLUDE_DTB_IN_BOOTIMG := true
-  BOARD_PREBUILT_DTBIMAGE := $(DEVICE_PATH)/prebuilt/dtb.img
-endif
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+BOARD_KERNEL_IMAGE_NAME := Image
+
+# 明确告诉 mkbootimg 去哪里吃这个 dtb 文件
+BOARD_MKBOOTIMG_ARGS += --dtb $(PRODUCT_OUT)/dtb.img
 
 # Partitions 分区大小（请务必确认 33554432 是否与你提取的官方 boot.img 大小一致）
 BOARD_FLASH_BLOCK_SIZE := 131072 
