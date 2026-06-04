@@ -73,7 +73,7 @@ TARGET_FORCE_PREBUILT_KERNEL := true
 ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+# 修复：删除了这里的 BOARD_MKBOOTIMG_ARGS += --dtb ...，交给系统自动挂载，防止参数重复报错
 endif
 
 # Partitions 分区大小（请务必确认 33554432 是否与你提取的官方 boot.img 大小一致）
