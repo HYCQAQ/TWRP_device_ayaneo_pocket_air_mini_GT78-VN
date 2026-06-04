@@ -109,7 +109,8 @@ TW_THEME := landscape_hdpi
 RECOVERY_VARIANT := twrp
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
-TW_INPUT_BLACKLIST := "hbtp_vm"
+# 修复：精准屏蔽内置的 Xbox360 手柄事件流，让 hyn_ts 触屏恢复正常
+TW_INPUT_BLACKLIST := "hbtp_vm X-box Microsoft pad"
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_SCREEN_RES_X := 1280
