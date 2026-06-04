@@ -110,3 +110,17 @@ TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
+
+# Screen Rotation (90 degrees for landscape devices)
+TW_ROTATION := 90
+
+# Default Language (Simplified Chinese)
+TW_DEFAULT_LANGUAGE := zh_CN
+
+# ADB Configuration (Enable ADB on startup)
+TW_ADB_ENABLE_IN_STARTUP := true
+TWRP_INCLUDE_LOGCAT := true
+TW_USE_NEW_MINADBD := true
+
+# Download Mode
+TW_HAS_DOWNLOAD_MODE := true
