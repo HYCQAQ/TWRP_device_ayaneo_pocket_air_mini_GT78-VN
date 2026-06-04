@@ -9,8 +9,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# 继承设备专有配置
-$(call inherit-product, device/arbor/GT78-VN/device.mk)
+# 继承设备专有配置 (注意这里改成了 GT78_VN)
+$(call inherit-product, device/arbor/GT78_VN/device.mk)
 
 PRODUCT_DEVICE := GT78_VN
 PRODUCT_NAME := twrp_GT78_VN
