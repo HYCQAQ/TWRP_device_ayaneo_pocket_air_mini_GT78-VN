@@ -54,7 +54,8 @@ BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x07c08000
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
+# 核心修正：强行将 SELinux 设为 permissive（宽容模式）
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=eng androidboot.selinux=permissive
 
 # 修复：必须明确将 base 和 pagesize 压入打包参数
 # BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
@@ -121,7 +122,9 @@ TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := false
 TW_SCREEN_RES_X := 1280
 TW_SCREEN_RES_Y := 960
-
+# 强制 TWRP 采用经典的 LinuxFB 渲染模式，防止 minui 图形库因 DRM 兼容问题闪退
+RECOVERY_GRAPHICS_FORCE_USE_LINUXFB := true
+BOARD_HAS_RECOVERY_GRAPHICS_FORCE_USE_LINUXFB := true
 
 # ADB 调试配置
 TW_ADB_ENABLE_IN_STARTUP := true
