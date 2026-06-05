@@ -23,3 +23,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-arbor
 # PRODUCT_BUILD_PROP_OVERRIDES += \
 #    PRIVATE_BUILD_DESC="full_k85v1_64-user 11 RP1A.200720.011 mp1V95182 release-keys"
 # BUILD_FINGERPRINT := ARBOR/GT78-VN/GT78-VN:11/RP1A.200720.011/mp1V95182:user/release-keys
+
+#  100% 正确的产品层级搬运规则（去掉右边的 $(PRODUCT_OUT)/ 变量）
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/prebuilt/dtb.img:dtb.img
