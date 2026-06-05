@@ -25,3 +25,6 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier \
     update_engine_sideload
+
+PRODUCT_COPY_FILES += \
+    bootable/recovery/gui/theme/common/languages/zh_CN.xml:recovery/root/twres/languages/zh_CN.xml
