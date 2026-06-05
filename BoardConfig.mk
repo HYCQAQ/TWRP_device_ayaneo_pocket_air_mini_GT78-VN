@@ -115,7 +115,7 @@ TW_DEFAULT_LANGUAGE := zh_CN
 
 TW_SCREEN_BLANK_ON_BOOT := true
 # 修复：精准屏蔽内置的 Xbox360 手柄事件流，让 hyn_ts 触屏恢复正常
-TW_INPUT_BLACKLIST := "Microsoft ACCDET"
+TW_INPUT_BLACKLIST := "Microsoft X-box 360 pad"
 TW_USE_TOOLBOX := true
 # 精简空间关闭重打包工具
 TW_INCLUDE_REPACKTOOLS := false
