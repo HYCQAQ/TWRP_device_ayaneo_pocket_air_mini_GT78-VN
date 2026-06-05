@@ -163,3 +163,5 @@ LZMA_RAMDISK_TARGET_COMPRESSION := true
 # ====== 抄自 N8P：TWRP 官方原生重载重链接开关，彻底干掉 libresetprop.so 缺失引发的闪退 ======
 TW_INCLUDE_RESETPROP := true
 
+# 这样写效果一样，但逻辑上更温和，只删languages文件夹，系统会自动重建它
+$(shell rm -rf $(PRODUCT_OUT)/recovery/root/twres/languages)
