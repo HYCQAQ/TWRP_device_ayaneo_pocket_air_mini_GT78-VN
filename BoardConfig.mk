@@ -54,7 +54,10 @@ BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_RAMDISK_OFFSET := 0x07c08000
 BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
+
+# 抄自 N8P：完美合并了 MTK 核心调优、SELinux 宽容、以及强制 USB ConfigFS 通讯参数
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive androidboot.usbconfigfs=true
+# BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
 
 # 修复：必须明确将 base 和 pagesize 压入打包参数
 # BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
@@ -146,8 +149,7 @@ TW_HAS_DOWNLOAD_MODE := true
 TARGET_RECOVERY_DEVICE_MODULES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-service.recovery \
-    libresetprop
+    android.hardware.boot@1.0-service.recovery 
 
 # 兼容性代号
 TARGET_RECOVERY_DEVICE_ALIASES := GT78-VN
@@ -158,4 +160,7 @@ BOARD_DO_NOT_STRIP_RECOVERY := false
 
 # 使用更通用的压缩配置
 LZMA_RAMDISK_TARGET_COMPRESSION := true
+
+# ====== 抄自 N8P：TWRP 官方原生重载重链接开关，彻底干掉 libresetprop.so 缺失引发的闪退 ======
+TW_INCLUDE_RESETPROP := true
 
