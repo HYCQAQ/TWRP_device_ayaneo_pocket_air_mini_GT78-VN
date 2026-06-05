@@ -57,8 +57,8 @@ BOARD_KERNEL_TAGS_OFFSET := 0x0bc08000
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 buildvariant=user
 
 # 修复：必须明确将 base 和 pagesize 压入打包参数
-BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
-BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
+# BOARD_MKBOOTIMG_ARGS += --base $(BOARD_KERNEL_BASE)
+# BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
@@ -70,8 +70,8 @@ TARGET_FORCE_PREBUILT_KERNEL := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 BOARD_KERNEL_IMAGE_NAME := Image
 
-# 告诉 mkbootimg 使用输出目录下的 dtb（此时 BoardConfig 不负责复制，只负责指路）
-BOARD_MKBOOTIMG_ARGS += --dtb $(PRODUCT_OUT)/dtb.img
+# 直接让 mkbootimg 去你设备树的原路径下吃 dtb 文件
+BOARD_MKBOOTIMG_ARGS += --dtb $(DEVICE_PATH)/prebuilt/dtb.img
 
 # Partitions 分区大小（请务必确认 33554432 是否与你提取的官方 boot.img 大小一致）
 BOARD_FLASH_BLOCK_SIZE := 131072 
