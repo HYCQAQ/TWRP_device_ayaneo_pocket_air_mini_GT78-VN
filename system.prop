@@ -2,8 +2,14 @@
 ro.sys.usb.storage.type=mtk
 ro.sys.usb.bicr=no
 ro.sys.usb.charging.only=no
-ro.recovery.usb.vid=0E8D
-ro.recovery.usb.pid=2008
+
+# 关键：修改为与 init.rc 一致的 Google 通用十六进制 ID，防止 Windows 驱动识别错误
+ro.recovery.usb.vid=0x18d1
+ro.recovery.usb.pid=0x2d08
+
+# 致命修复：显式指定 MT6785 的 USB 控制器名称！
+# 这样才能喂饱 init.rc 里的 ${sys.usb.controller}，让电脑发出“叮咚”的连接成功提示音
+sys.usb.controller=musb-hdrc
 
 # MTK 平台安全加密参数（关键：用于解锁 Data 分区）
 ro.mediatek.platform=MT6785
