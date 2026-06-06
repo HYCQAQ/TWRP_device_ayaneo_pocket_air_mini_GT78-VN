@@ -110,7 +110,7 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 TW_THEME := landscape_hdpi
 RECOVERY_VARIANT := twrp
 # 语言包精简：关闭“全语言包”
-TW_EXTRA_LANGUAGES := true
+TW_EXTRA_LANGUAGES := false
 TW_DEFAULT_LANGUAGE := zh_CN
 
 TW_SCREEN_BLANK_ON_BOOT := true
