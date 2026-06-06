@@ -171,5 +171,5 @@ BOARD_KERNEL_CMDLINE += androidboot.vbmeta.device_state=unlocked
 BOARD_KERNEL_CMDLINE += androidboot.veritymode=enforcing
 
 # 这个定义决定了 FBE 解密时使用哪个分区作为 Key 的存储库
-# 你之前的日志显示 metadata 是 mmcblk0p14，必须显式告诉编译器
+# 你之前的日志显示 metadata 是 mmcblk0p14必须显式告诉编译器
 BOARD_METADATA_DEVICE := /dev/block/by-name/md_udc
