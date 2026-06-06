@@ -111,7 +111,7 @@ TW_THEME := landscape_hdpi
 RECOVERY_VARIANT := twrp
 # 语言包精简：关闭“全语言包”
 TW_EXTRA_LANGUAGES := false
-TW_DEFAULT_LANGUAGE := zh_CN
+# TW_DEFAULT_LANGUAGE := zh_CN
 
 TW_SCREEN_BLANK_ON_BOOT := true
 # 修复：精准屏蔽内置的 Xbox360 手柄事件流，让 hyn_ts 触屏恢复正常
@@ -142,6 +142,7 @@ TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_USE_FSCRYPT_POLICY := 2
 TW_LOAD_VENDOR_MODULES := true
 TW_INCLUDE_KEYMASTER := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 
 # 其他功能
 TW_HAS_DOWNLOAD_MODE := true
@@ -170,6 +171,4 @@ TW_INCLUDE_RESETPROP := true
 BOARD_KERNEL_CMDLINE += androidboot.vbmeta.device_state=unlocked
 BOARD_KERNEL_CMDLINE += androidboot.veritymode=enforcing
 
-# 这个定义决定了 FBE 解密时使用哪个分区作为 Key 的存储库
-# 你之前的日志显示 metadata 是 mmcblk0p14必须显式告诉编译器
-BOARD_METADATA_DEVICE := /dev/block/by-name/md_udc
+BOARD_METADATA_DEVICE := md_udc
