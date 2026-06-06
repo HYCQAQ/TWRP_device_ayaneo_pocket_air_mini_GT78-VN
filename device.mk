@@ -10,5 +10,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 # Boot control HAL
-PRODUCT_PACKAGES += \
-    bootctrl
+PRODUCT_PACKAGES += android.hardware.keymaster@4.0
+
+PRODUCT_PROPERTY_OVERRIDES += keymaster_ver=4.0
