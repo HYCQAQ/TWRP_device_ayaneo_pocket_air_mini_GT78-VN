@@ -5,9 +5,9 @@
 /vendor          ext4    vendor        flags=display="Vendor";logical;slotselect;backup=1;wipeingui
 /product         ext4    product       flags=display="Product";logical;slotselect;backup=1;wipeingui
 
-# metadata / data（解密关键）
-/metadata   ext4   /dev/block/by-name/md_udc      flags=display="Metadata";backup=1;wrappedkey
-/data       ext4   /dev/block/by-name/userdata    flags=display="Data";backup=1;wipeingui;encryptable=footer
+# metadata / data（解密关键：使用 FBE 参数与 wrappedkey）
+/metadata   ext4   /dev/block/by-name/md_udc      flags=display="Metadata";backup=1;wrappedkey;first_stage_mount
+/data       ext4   /dev/block/by-name/userdata    flags=display="Data";backup=1;wipeingui;fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption;wrappedkey
 
 # 引导与验证
 /boot         emmc   /dev/block/by-name/boot          flags=display="Boot";slotselect;backup=1;flashimg=1
