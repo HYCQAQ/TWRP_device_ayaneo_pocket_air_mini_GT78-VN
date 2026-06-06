@@ -132,17 +132,17 @@ TW_USE_NEW_MINADBD := true
 BOARD_HAS_MTK_HARDWARE := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 
-# 修复：完善安卓 11/12 FBE 解密必需参数
+# 添加加密支持
 TW_INCLUDE_CRYPTO := true
-# 强制 TWRP 适应 Android 11 的 FBE 加密密钥处理
+# 添加 FBE加密支持
 TW_INCLUDE_CRYPTO_FBE := true
-TW_CRYPTO_USE_SYSTEM_VOLD := true
+# 设备有元加密分区
 BOARD_USES_METADATA_PARTITION := true
+# 元加密分区参与解密支持
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
-TW_USE_FSCRYPT_POLICY := 2
-TW_LOAD_VENDOR_MODULES := true
-TW_INCLUDE_KEYMASTER := true
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+
+PRODUCT_PACKAGES += android.hardware.keymaster@4.0
+PRODUCT_PROPERTY_OVERRIDES += keymaster_ver=4.0
 
 # 其他功能
 TW_HAS_DOWNLOAD_MODE := true
