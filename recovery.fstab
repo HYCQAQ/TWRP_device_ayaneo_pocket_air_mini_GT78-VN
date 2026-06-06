@@ -1,33 +1,7 @@
-# Android fstab file for TWRP 12.1 (MTK Logical Partitions)
-# <src>                                                    <mnt_point>    <type>    <mnt_flags and options>        <fs_mgr_flags>
-# 动态逻辑分区
-/system_root     ext4    system        flags=display="System";logical;slotselect;backup=1
-/vendor          ext4    vendor        flags=display="Vendor";logical;slotselect;backup=1;wipeingui
-/product         ext4    product       flags=display="Product";logical;slotselect;backup=1;wipeingui
-
-# metadata / data（解密关键：使用 FBE 参数与 wrappedkey）
-/metadata   ext4   /dev/block/by-name/md_udc      flags=display="Metadata";backup=1;wrappedkey;first_stage_mount
-/data       ext4   /dev/block/by-name/userdata    flags=display="Data";backup=1;wipeingui;fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption;wrappedkey
-
-# 引导与验证
-/boot         emmc   /dev/block/by-name/boot          flags=display="Boot";slotselect;backup=1;flashimg=1
-/dtbo         emmc   /dev/block/by-name/dtbo          flags=display="Dtbo";slotselect;backup=1;flashimg=1
-/vbmeta       emmc   /dev/block/by-name/vbmeta        flags=display="Vbmeta";slotselect;backup=1;flashimg=1
-/vbmeta_system emmc  /dev/block/by-name/vbmeta_system flags=display="Vbmeta System";slotselect;backup=1;flashimg=1
-/vbmeta_vendor emmc  /dev/block/by-name/vbmeta_vendor flags=display="Vbmeta Vendor";slotselect;backup=1;flashimg=1
-
-# MTK 受保护分区
-/protect_f   ext4   /dev/block/by-name/protect1   flags=display="protect_f";backup=1;wrappedkey
-/protect_s   ext4   /dev/block/by-name/protect2   flags=display="protect_s";backup=1;wrappedkey
-/nvdata      ext4   /dev/block/by-name/nvdata     flags=display="nvdata";backup=1;wrappedkey
-/nvcfg       ext4   /dev/block/by-name/nvcfg      flags=display="nvcfg";backup=1;wrappedkey
-/nvram       emmc   /dev/block/by-name/nvram      flags=display="Nvram";backup=1;flashimg=1
-
-# 其他底层分区
-/persistent  emmc   /dev/block/by-name/frp        flags=display="Persistent";backup=1
-/misc        emmc   /dev/block/by-name/misc       flags=display="Misc";backup=1
-/logo        emmc   /dev/block/by-name/logo       flags=display="Logo";backup=1;flashimg=1
-
-# 外置存储
-auto  vfat  /devices/platform/externdevice*  flags=display="MicroSD";storage;wipeingui;removable
-auto  vfat  /devices/platform/usb3_xhci*     flags=display="USB-OTG";storage;removable
+#<src>                                           <mnt_point>           <type>   <mnt_flags and options>                                         <fs_mgr_flags>
+/dev/block/platform/bootdevice/by-name/system    /system               ext4     ro                                                              wait,avb=vbmeta,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+/dev/block/platform/bootdevice/by-name/vendor    /vendor               ext4     ro                                                              wait,avb,first_stage_mount
+/dev/block/platform/bootdevice/by-name/misc      /misc                 emmc     defaults                                                        defaults
+/dev/block/platform/bootdevice/by-name/userdata  /data                 ext4     noatime,nosuid,nodev,noauto_da_alloc,errors=panic,inlinecrypt   wait,check,formattable,quota,latemount,resize,reservedsize=128m,fileencryption=aes-256-xts:aes-256-cts:v1
+/dev/block/platform/bootdevice/by-name/userdata  /data                 f2fs     noatime,nosuid,nodev,discard,flush_merge,reserve_root=134217,resgid=1065,alloc_mode=reuse,fsync_mode=nobarrier,inlinecrypt wait,check,formattable,quota,latemount,reservedsize=128m,fileencryption=aes-256-xts:aes-256-cts:v1
+/dev/block/platform/bootdevice/by-name/metadata  /metadata             ext4     noatime,nosuid,nodev,discard                                    wait,check,formattable,first_stage_mount
