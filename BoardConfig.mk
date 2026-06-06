@@ -141,8 +141,6 @@ BOARD_USES_METADATA_PARTITION := true
 # 元加密分区参与解密支持
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 
-PRODUCT_PACKAGES += android.hardware.keymaster@4.0
-PRODUCT_PROPERTY_OVERRIDES += keymaster_ver=4.0
 
 # 其他功能
 TW_HAS_DOWNLOAD_MODE := true
