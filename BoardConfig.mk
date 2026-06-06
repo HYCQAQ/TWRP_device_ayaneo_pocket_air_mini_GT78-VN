@@ -32,7 +32,7 @@ TARGET_CPU_VARIANT_RUNTIME := cortex-a76
 
 # 副架构 (修改为符合 Android 12 规范的定义)
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-a
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := generic
@@ -110,7 +110,7 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 TW_THEME := landscape_hdpi
 RECOVERY_VARIANT := twrp
 # 语言包精简：关闭“全语言包”
-TW_EXTRA_LANGUAGES := false
+TW_EXTRA_LANGUAGES := true
 TW_DEFAULT_LANGUAGE := zh_CN
 
 TW_SCREEN_BLANK_ON_BOOT := true
@@ -140,6 +140,8 @@ TW_CRYPTO_USE_SYSTEM_VOLD := true
 BOARD_USES_METADATA_PARTITION := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
 TW_USE_FSCRYPT_POLICY := 2
+TW_LOAD_VENDOR_MODULES := true
+TW_INCLUDE_KEYMASTER := true
 
 # 其他功能
 TW_HAS_DOWNLOAD_MODE := true
@@ -170,4 +172,4 @@ BOARD_KERNEL_CMDLINE += androidboot.veritymode=enforcing
 
 # 这个定义决定了 FBE 解密时使用哪个分区作为 Key 的存储库
 # 你之前的日志显示 metadata 是 mmcblk0p14，必须显式告诉编译器
-BOARD_METADATA_DEVICE := /dev/block/by-name/metadata
+BOARD_METADATA_DEVICE := /dev/block/by-name/md_udc
