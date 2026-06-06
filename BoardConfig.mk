@@ -115,7 +115,7 @@ TW_DEFAULT_LANGUAGE := zh_CN
 
 TW_SCREEN_BLANK_ON_BOOT := true
 # 修复：精准屏蔽内置的 Xbox360 手柄事件流，让 hyn_ts 触屏恢复正常
-TW_INPUT_BLACKLIST := "Microsoft X-box 360 pad"
+# TW_INPUT_BLACKLIST := "Microsoft X-box 360 pad"
 TW_USE_TOOLBOX := true
 # 精简空间关闭重打包工具
 TW_INCLUDE_REPACKTOOLS := false
@@ -163,5 +163,11 @@ LZMA_RAMDISK_TARGET_COMPRESSION := true
 # ====== 抄自 N8P：TWRP 官方原生重载重链接开关，彻底干掉 libresetprop.so 缺失引发的闪退 ======
 TW_INCLUDE_RESETPROP := true
 
-# 这样写效果一样，但逻辑上更温和，只删languages文件夹，系统会自动重建它
-$(shell rm -rf $(PRODUCT_OUT)/recovery/root/twres/languages)
+# 强制指定元数据加密类型 (Android 11/12 标准)
+# 这一行决定了 TWRP 如何处理 metadata 分区中的 vold 加密头
+BOARD_KERNEL_CMDLINE += androidboot.vbmeta.device_state=unlocked
+BOARD_KERNEL_CMDLINE += androidboot.veritymode=enforcing
+
+# 这个定义决定了 FBE 解密时使用哪个分区作为 Key 的存储库
+# 你之前的日志显示 metadata 是 mmcblk0p14，必须显式告诉编译器
+BOARD_METADATA_DEVICE := /dev/block/by-name/metadata
